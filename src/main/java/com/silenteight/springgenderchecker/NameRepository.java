@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 @Component
@@ -56,6 +57,15 @@ public class NameRepository {
         }
         StringTokenizer tokens = new StringTokenizer(sentence);
         return tokens.countTokens();
+    }
+
+    public List<String> wordsToList(String name) {
+        List<String> list = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(name, " ");
+        while (tokenizer.hasMoreTokens()) {
+            list.add(tokenizer.nextToken());
+        }
+        return list;
     }
 
 }

@@ -3,6 +3,8 @@ package com.silenteight.springgenderchecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -16,7 +18,7 @@ public class NameController {
     }
 
     @PostMapping("/second-variant-check")
-    public int checkMajorityInName(@RequestBody String name) {
+    public List<String> checkMajorityInName(@RequestBody String name) {
         return nameService.compareMajorityInName(name);
     }
 

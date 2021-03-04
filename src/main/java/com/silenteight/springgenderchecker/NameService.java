@@ -3,6 +3,8 @@ package com.silenteight.springgenderchecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.silenteight.springgenderchecker.NameRepository.FEMALE_NAMES;
 import static com.silenteight.springgenderchecker.NameRepository.MALE_NAMES;
 
@@ -19,8 +21,12 @@ public class NameService {
         return nameRepository.printGenderByFirstName(maleNamePresent, femaleNamePresent);
     }
 
-    public int compareMajorityInName(String name) {
-        return nameRepository.countWords(name);
+    public List<String> compareMajorityInName(String name) {
+        int countedWords = nameRepository.countWords(name);
+        List<String> listOfWords = nameRepository.wordsToList(name);
+        listOfWords.add(String.valueOf(countedWords));
+
+        return listOfWords;
     }
 
 
