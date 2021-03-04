@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.silenteight.springgenderchecker.NameRepository.FEMALE_NAMES;
-import static com.silenteight.springgenderchecker.NameRepository.MALE_NAMES;
+import static com.silenteight.springgenderchecker.NameRepository.FILE_FEMALE_NAMES;
+import static com.silenteight.springgenderchecker.NameRepository.FILE_MALE_NAMES;
 
 @Service
 @RequiredArgsConstructor
@@ -15,9 +15,9 @@ public class NameService {
     private final NameRepository nameRepository;
 
     public String extractAndCompareName(String name) {
-        String extractedName = nameRepository.firstWordExtractor(name);
-        boolean maleNamePresent = nameRepository.isNamePresent(MALE_NAMES, extractedName);
-        boolean femaleNamePresent = nameRepository.isNamePresent(FEMALE_NAMES, extractedName);
+        String shortenedName = nameRepository.firstWordExtractor(name);
+        boolean maleNamePresent = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, shortenedName);
+        boolean femaleNamePresent = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, shortenedName);
         return nameRepository.printGenderByFirstName(maleNamePresent, femaleNamePresent);
     }
 
@@ -34,13 +34,13 @@ public class NameService {
         String name2 = listOfWords.get(1);
         String name3 = listOfWords.get(2);
 
-        boolean maleNamePresent1 = nameRepository.isNamePresent(MALE_NAMES, name1);
-        boolean maleNamePresent2 = nameRepository.isNamePresent(MALE_NAMES, name2);
-        boolean maleNamePresent3 = nameRepository.isNamePresent(MALE_NAMES, name3);
+        boolean maleNamePresent1 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name1);
+        boolean maleNamePresent2 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name2);
+        boolean maleNamePresent3 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name3);
 
-        boolean femaleNamePresent1 = nameRepository.isNamePresent(FEMALE_NAMES, name1);
-        boolean femaleNamePresent2 = nameRepository.isNamePresent(FEMALE_NAMES, name2);
-        boolean femaleNamePresent3 = nameRepository.isNamePresent(FEMALE_NAMES, name3);
+        boolean femaleNamePresent1 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name1);
+        boolean femaleNamePresent2 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name2);
+        boolean femaleNamePresent3 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name3);
 
         int maleNameCounter = 0;
         int femaleNameCounter = 0;

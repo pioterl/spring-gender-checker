@@ -16,8 +16,9 @@ import java.util.StringTokenizer;
 @Getter
 @Setter
 public class NameRepository {
-    final static String MALE_NAMES = "src\\main\\resources\\male_names.txt";
-    final static String FEMALE_NAMES = "src\\main\\resources\\female_names.txt";
+
+    final static String FILE_MALE_NAMES = "src\\main\\resources\\male_names.txt";
+    final static String FILE_FEMALE_NAMES = "src\\main\\resources\\female_names.txt";
 
     public String firstWordExtractor(String input) {
         return input.split(" ")[0];
@@ -35,7 +36,7 @@ public class NameRepository {
         }
     }
 
-    public boolean isNamePresent(String file, String name) {
+    public boolean isNamePresentInFile(String file, String name) {
         String line;
         ArrayList<String> fileContent = new ArrayList<>();
         try {
