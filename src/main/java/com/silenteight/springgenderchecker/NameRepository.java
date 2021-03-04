@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 @Component
 @RequiredArgsConstructor
@@ -48,4 +49,13 @@ public class NameRepository {
         }
         return fileContent.contains(name);
     }
+
+    public int countWords(String sentence) {
+        if (sentence == null || sentence.isEmpty()) {
+            return 0;
+        }
+        StringTokenizer tokens = new StringTokenizer(sentence);
+        return tokens.countTokens();
+    }
+
 }

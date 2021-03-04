@@ -12,7 +12,12 @@ public class NameController {
 
     @PostMapping("/first-variant-check")
     public String checkName(@RequestBody String name) {
-        return nameService.readName(name);
+        return nameService.extractAndCompareName(name);
+    }
+
+    @PostMapping("/second-variant-check")
+    public int checkMajorityInName(@RequestBody String name) {
+        return nameService.compareMajorityInName(name);
     }
 
 }

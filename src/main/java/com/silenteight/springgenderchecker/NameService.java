@@ -12,11 +12,17 @@ public class NameService {
 
     private final NameRepository nameRepository;
 
-    public String readName(String name) {
+    public String extractAndCompareName(String name) {
         String extractedName = nameRepository.firstWordExtractor(name);
         boolean maleNamePresent = nameRepository.isNamePresent(MALE_NAMES, extractedName);
         boolean femaleNamePresent = nameRepository.isNamePresent(FEMALE_NAMES, extractedName);
         return nameRepository.printGenderByFirstName(maleNamePresent, femaleNamePresent);
     }
+
+    public int compareMajorityInName(String name) {
+        return nameRepository.countWords(name);
+    }
+
+
 
 }
