@@ -23,7 +23,6 @@ public class NameService {
 
     public String compareMajorityInName(String name) {
 
-        int countedWords = nameRepository.countWords(name);
         List<String> listOfWords = nameRepository.wordsToList(name);
 
         if (listOfWords.size() < 3) {
@@ -66,4 +65,11 @@ public class NameService {
     }
 
 
+    public List<String> getMaleNames() {
+        return nameRepository.getAllNames(FILE_MALE_NAMES);
+    }
+
+    public List<String> getFemaleNames() {
+        return nameRepository.getAllNames(FILE_FEMALE_NAMES);
+    }
 }

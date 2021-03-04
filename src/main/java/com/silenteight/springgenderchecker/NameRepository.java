@@ -7,9 +7,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
@@ -69,4 +73,13 @@ public class NameRepository {
         return list;
     }
 
+    public List<String> getAllNames(String file) {
+        List<String> result = null;
+        try (Stream<String> lines = Files.lines(Paths.get(file))) {
+            result = lines.collect(Collectors.toList());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
 }
