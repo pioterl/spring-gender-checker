@@ -24,4 +24,15 @@ class NameControllerTest {
         assertEquals("female", nameController.checkName(femaleName));
         assertEquals("inconclusive (no such name in both files)", nameController.checkName(inconclusiveName));
     }
+
+    @Test
+    void checkMajorityInName() {
+        String maleNamesMajority = "Jadwiga Jerzy Robert";
+        String femaleNamesMajority = "Dariusz Gertruda Weronika";
+        String inconclusiveNames = "Dariusz Rokita Weronika";
+
+        assertEquals("male", nameController.checkMajorityInName(maleNamesMajority));
+        assertEquals("female", nameController.checkMajorityInName(femaleNamesMajority));
+        assertEquals("inconclusive", nameController.checkMajorityInName(inconclusiveNames));
+    }
 }
