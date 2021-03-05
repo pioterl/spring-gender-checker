@@ -23,13 +23,13 @@ public class NameController {
     }
 
     @GetMapping("/male-tokens")
-    public List<String> getMaleTokens() {
-        return nameService.getMaleNames();
+    public List<String> getAllMaleTokens() {
+        return nameService.getAllMaleNames();
     }
 
     @GetMapping("/female-tokens")
-    public List<String> getFemaleTokens() {
-        return nameService.getFemaleNames();
+    public List<String> getAllFemaleTokens() {
+        return nameService.getAllFemaleNames();
     }
 
 }

@@ -26,31 +26,18 @@ public class NameService {
         List<String> listOfWords = nameRepository.wordsToList(name);
 
         if (listOfWords.size() < 3) {
-            return "You need to type 3 words";
+            return "You need to type minimum 3 words";
         }
-
-        String name1 = listOfWords.get(0);
-        String name2 = listOfWords.get(1);
-        String name3 = listOfWords.get(2);
-
-        boolean maleNamePresent1 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name1);
-        boolean maleNamePresent2 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name2);
-        boolean maleNamePresent3 = nameRepository.isNamePresentInFile(FILE_MALE_NAMES, name3);
-
-        boolean femaleNamePresent1 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name1);
-        boolean femaleNamePresent2 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name2);
-        boolean femaleNamePresent3 = nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, name3);
 
         int maleNameCounter = 0;
         int femaleNameCounter = 0;
 
-        if (maleNamePresent1) maleNameCounter++;
-        if (maleNamePresent2) maleNameCounter++;
-        if (maleNamePresent3) maleNameCounter++;
-
-        if (femaleNamePresent1) femaleNameCounter++;
-        if (femaleNamePresent2) femaleNameCounter++;
-        if (femaleNamePresent3) femaleNameCounter++;
+        for (int i = 0; i < listOfWords.size(); i++) {
+            if (nameRepository.isNamePresentInFile(FILE_MALE_NAMES, listOfWords.get(i)))
+                maleNameCounter++;
+            else if (nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, listOfWords.get(i)))
+                femaleNameCounter++;
+        }
 
         String gender;
         if (maleNameCounter > femaleNameCounter) {
@@ -60,16 +47,15 @@ public class NameService {
         } else {
             gender = "inconclusive";
         }
-
         return gender;
     }
 
 
-    public List<String> getMaleNames() {
+    public List<String> getAllMaleNames() {
         return nameRepository.getAllNames(FILE_MALE_NAMES);
     }
 
-    public List<String> getFemaleNames() {
+    public List<String> getAllFemaleNames() {
         return nameRepository.getAllNames(FILE_FEMALE_NAMES);
     }
 }

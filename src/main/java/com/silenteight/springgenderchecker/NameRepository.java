@@ -74,7 +74,7 @@ public class NameRepository {
     }
 
     public List<String> getAllNames(String file) {
-        List<String> result = null;
+        List<String> result = new ArrayList<>();
         try (Stream<String> lines = Files.lines(Paths.get(file))) {
             result = lines.collect(Collectors.toList());
         } catch (Exception e) {
