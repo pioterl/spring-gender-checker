@@ -32,14 +32,15 @@ public class NameService {
         int maleNameCounter = 0;
         int femaleNameCounter = 0;
 
-        for (int i = 0; i < listOfWords.size(); i++) {
-            if (nameRepository.isNamePresentInFile(FILE_MALE_NAMES, listOfWords.get(i)))
+        for (String word : listOfWords) {
+            if (nameRepository.isNamePresentInFile(FILE_MALE_NAMES, word))
                 maleNameCounter++;
-            else if (nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, listOfWords.get(i)))
+            else if (nameRepository.isNamePresentInFile(FILE_FEMALE_NAMES, word))
                 femaleNameCounter++;
         }
 
         String gender;
+
         if (maleNameCounter > femaleNameCounter) {
             gender = "male";
         } else if (maleNameCounter < femaleNameCounter) {

@@ -56,14 +56,6 @@ public class NameRepository {
         return fileContent.contains(name);
     }
 
-    public int countWords(String sentence) {
-        if (sentence == null || sentence.isEmpty()) {
-            return 0;
-        }
-        StringTokenizer tokens = new StringTokenizer(sentence);
-        return tokens.countTokens();
-    }
-
     public List<String> wordsToList(String name) {
         List<String> list = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(name, " ");
