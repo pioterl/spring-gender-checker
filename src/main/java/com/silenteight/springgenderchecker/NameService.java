@@ -25,9 +25,8 @@ public class NameService {
 
         List<String> listOfWords = nameRepository.wordsToList(name);
 
-        if (listOfWords.size() < 3) {
+        if (listOfWords.size() < 3)
             return "You need to type minimum 3 words";
-        }
 
         int maleNameCounter = 0;
         int femaleNameCounter = 0;
@@ -41,16 +40,14 @@ public class NameService {
 
         String gender;
 
-        if (maleNameCounter > femaleNameCounter) {
+        if (maleNameCounter > femaleNameCounter)
             gender = "male";
-        } else if (maleNameCounter < femaleNameCounter) {
+        else if (maleNameCounter < femaleNameCounter)
             gender = "female";
-        } else {
+        else
             gender = "inconclusive";
-        }
         return gender;
     }
-
 
     public List<String> getAllMaleNames() {
         return nameRepository.getAllNames(FILE_MALE_NAMES);
